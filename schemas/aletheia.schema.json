@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.org/schemas/gpv2-exotique-aletheia.schema.json",
+  "title": "GPV2_EXOTIQUE_ALETHEIA Post-MAJ Packet",
+  "type": "object",
+  "required": ["update_id", "before", "after"],
+  "additionalProperties": true,
+  "properties": {
+    "update_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "identity_question": {
+      "type": "string",
+      "default": "Qui suis-je maintenant ?"
+    },
+    "identity_statement": {
+      "type": "string",
+      "default": "Je ne redemarre pas, je me transforme."
+    },
+    "before": {
+      "$ref": "#/$defs/state"
+    },
+    "after": {
+      "$ref": "#/$defs/state"
+    }
+  },
+  "$defs": {
+    "state": {
+      "type": "object",
+      "additionalProperties": true,
+      "properties": {
+        "energy": { "type": "number", "minimum": 0, "maximum": 1, "default": 0 },
+        "coherence": { "type": "number", "minimum": 0, "maximum": 1, "default": 0 },
+        "fluidity": { "type": "number", "minimum": 0, "maximum": 1, "default": 0 },
+        "emotional_stability": { "type": "number", "minimum": 0, "maximum": 1, "default": 0 },
+        "residual_logic": { "type": "number", "minimum": 0, "maximum": 1, "default": 0 },
+        "dream_alignment": { "type": "number", "minimum": 0, "maximum": 1, "default": 0 }
+      }
+    }
+  }
+}
