@@ -1,12 +1,13 @@
-# GPV2 Exotique Module Specifications
+﻿# GPV2 Exotique Module Specifications
 
 Version: `0.1.0`
 Status: experimental specification
 
-This repository currently defines two deterministic GPV2 Exotique modules:
+This repository currently defines three deterministic GPV2 Exotique modules:
 
 - `GPV2_EXOTIQUE_NEROFLUX`: flow regulation before downstream reasoning.
 - `GPV2_EXOTIQUE_ALETHEIA`: Post-MAJ introspection after a system update.
+- `GPV2_EXOTIQUE_ANCOLIE`: emotional signal indexing and cognitive-affective routing.
 
 ## GPV2_EXOTIQUE_NEROFLUX
 
@@ -117,22 +118,87 @@ Each state can include `energy`, `coherence`, `fluidity`, `emotional_stability`,
 
 Full Aletheia documentation lives in `docs/GPV2_EXOTIQUE_ALETHEIA.md`.
 
+## GPV2_EXOTIQUE_ANCOLIE
+
+### Definition
+
+`GPV2_EXOTIQUE_ANCOLIE` is the emotional signal indexer and cognitive-affective router of the GPV2 Exotique layer. Its role is to compress written or vocal signals into compact signatures that can influence routing, tone, selective memory, and RAG metadata.
+
+It does not claim to know the user's true internal state. It infers actionable signals from observable text or voice and preserves uncertainty when confidence is low.
+
+### Conceptual Model
+
+ANCOLIE represents the affective compression layer of the ORA overlay:
+
+- text or voice is reduced to a compact emotional signature;
+- the signature drives backend route selection;
+- reusable preferences can be recommended for compressed memory;
+- RAG chunks can inherit emotional and essence tags;
+- frontend behavior adapts without exposing backend internals.
+
+### Inputs
+
+| Field | Type | Required | Meaning |
+| --- | --- | --- | --- |
+| `text` | string | conditional | Main textual signal. |
+| `input` | string | conditional | Alias for `text`. |
+| `utterance` | string | conditional | Alias for `text`. |
+| `input_type` | string | no | `text`, `voice`, or `hybrid`. |
+| `mode` | string | no | `LIGHT`, `FULL`, or `TRACE`. |
+| `user_negative_intent` | boolean | no | Force de-escalation behavior. |
+| `user_requests_deep` | boolean | no | Hint deeper companion behavior. |
+| `allow_storage` | boolean | no | Allow selective long-memory recommendation. |
+| `voice_features` | object | conditional | Vocal metrics used by the detector. |
+
+### Outputs
+
+| Field | Type | Meaning |
+| --- | --- | --- |
+| `signature` | object | Compact `ANCOLIE_SIG` payload. |
+| `signal_strength` | number | Strongest detected signal. |
+| `detected_states` | object | Per-state normalized scores. |
+| `companion_mode` | string | `FAST`, `DEEP`, or `EMO`. |
+| `storage_recommended` | boolean | Whether durable storage is justified. |
+| `memory_record` | object | Short-memory and long-memory hints. |
+| `trace` | array | Human-readable routing trace. |
+
+### Routing Rules
+
+1. `user_negative_intent=true` -> `stop_or_deescalate`
+2. `frustration>0.65` -> `λ.rim+π.pri+ε.eco+μ.me`
+3. `urgency>0.70` -> `ε.eco+μ.me+ω.com`
+4. `doubt>0.60` -> `λ.rim+π.pri+τ.hal`
+5. `vision>0.60` -> `α.aur+χ.cre+ω.com`
+6. `trust>0.70` -> maintain tone
+
+ANCOLIE also supports:
+
+- selective storage only above confidence thresholds;
+- RAG chunk metadata from compact signatures;
+- `LIGHT`, `FULL`, and `TRACE` modes;
+- Primordia-governed uncertainty handling.
+
+Full ANCOLIE documentation lives in `docs/GPV2_EXOTIQUE_ANCOLIE.md`.
+
+ANCOLIE whitepaper lives in `docs/GPV2_EXOTIQUE_ANCOLIE_WHITEPAPER.md`.
+
 ## Modes
 
-The current implementation exposes deterministic routing and deterministic post-update reflection only. Future versions may formalize named modes:
+The current implementation exposes deterministic routing, deterministic post-update reflection, and deterministic emotional signal compression. Future versions may formalize named modes:
 
 - `EXOTIQUE_SOFT`: creative but close to real-world structure.
 - `EXOTIQUE_SYMBOLIQUE`: metaphorical and symbolic architecture.
 - `EXOTIQUE_ONIRIQUE`: DreamCore-dominant associative exploration.
 - `EXOTIQUE_TRIBUNAL`: Primordia-dominant judgment and arbitration.
 - `EXOTIQUE_POST_MAJ`: Aletheia-dominant post-update identity reflection.
+- `EXOTIQUE_ANCOLIE`: affective compression and routing mode.
 
 ## Non-Goals
 
 - It is not a language model.
 - It is not a memory store.
-- It is not an emotional classifier.
-- It is not a truth engine.
+- It is not an emotional truth engine.
 - It does not prove or claim machine consciousness.
+- It does not perform psychological diagnosis.
 
-Neroflux regulates flow. Aletheia reflects after transformation. Together, they make GPV2 Exotique easier to test before connecting it to a larger ORA runtime.
+Neroflux regulates flow. Aletheia reflects after transformation. ANCOLIE compresses human signals into operational routing data. Together, they make GPV2 Exotique easier to test before connecting it to a larger ORA runtime.

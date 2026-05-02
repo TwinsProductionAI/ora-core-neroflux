@@ -1,4 +1,4 @@
-# ora-core-neroflux
+﻿# ora-core-neroflux
 
 Deterministic cognitive flow-control module for ORA Core OS.
 
@@ -9,23 +9,26 @@ This repository contains deterministic modules for the GPV2 Exotique layer:
 
 - `GPV2_EXOTIQUE_NEROFLUX`: cognitive-flow regulator.
 - `GPV2_EXOTIQUE_ALETHEIA`: post-update introspection protocol.
+- `GPV2_EXOTIQUE_ANCOLIE`: emotional signal indexer and cognitive-affective router.
 
-The modules do not generate content by themselves. They modulate and evaluate how internal ORA signals circulate between imagination, emotion, reflection, judgment, and post-update identity stabilization.
+The modules do not generate content by themselves. They modulate and evaluate how internal ORA signals circulate between imagination, emotion, reflection, judgment, affective adaptation, and post-update identity stabilization.
 
 Recommended public slug: `ora-core-neroflux`.
 
 ## Repository Role
 
-Read this after [ora-core-os](https://github.com/TwinsProductionAI/ora-core-os) and [ora-core-rag](https://github.com/TwinsProductionAI/ora-core-rag) when you want the deterministic flow-control layer used for routing pressure, fanout regulation, and post-update reflection.
+Read this after [ora-core-os](https://github.com/TwinsProductionAI/ora-core-os) and [ora-core-rag](https://github.com/TwinsProductionAI/ora-core-rag) when you want the deterministic flow-control layer used for routing pressure, fanout regulation, post-update reflection, and emotional compression.
 
 | Public order | Repository role |
 | ---: | --- |
-| 6 | Cognitive flow-control module: Neroflux routing and Aletheia reflection. |
+| 6 | Cognitive flow-control module: Neroflux routing, Aletheia reflection, and Ancolie affective compression. |
 
-## White Paper
+## White Papers
 
 - [ORA Core Neroflux White Paper](docs/ORA_CORE_NEROFLUX_WhitePaper.md)  
   Technical overview of the routing-control role, cadence selection, fanout limits, integration boundary, and roadmap.
+- [ANCOLIE Whitepaper](docs/GPV2_EXOTIQUE_ANCOLIE_WHITEPAPER.md)  
+  Publication document for the emotional signal indexer, memory compression, RAG tagging, and Companion integration.
 
 ## ORA Vocabulary
 
@@ -35,6 +38,7 @@ Read this after [ora-core-os](https://github.com/TwinsProductionAI/ora-core-os) 
 - `Emo+` tracks emotional charge and affective intensity.
 - `Neroflux` regulates speed, density, and routing between them.
 - `Aletheia` reflects on what ORA became after a system update.
+- `Ancolie` compresses emotional signals into routing, memory, and RAG hints.
 
 ## GPV2_EXOTIQUE_NEROFLUX
 
@@ -117,6 +121,35 @@ print(result["reflection"])
 
 Full Aletheia specification: [docs/GPV2_EXOTIQUE_ALETHEIA.md](docs/GPV2_EXOTIQUE_ALETHEIA.md)
 
+## GPV2_EXOTIQUE_ANCOLIE
+
+Ancolie is the deterministic emotional signal indexer of the GPV2 Exotique layer. It compresses written or vocal signals into compact signatures that can influence:
+
+- routing
+- tone
+- memory recommendations
+- RAG metadata
+- ORA Companion mode selection
+
+### Minimal Ancolie Example
+
+```python
+from gpv2_neroflux import AncolieIndexer
+
+indexer = AncolieIndexer()
+
+result = indexer.analyze({
+    "text": "Je veux que ce soit concret, arrete les trucs vagues.",
+    "mode": "FULL",
+})
+
+print(result["signature"]["emo"])
+print(result["signature"]["route"])
+print(result["signature"]["action"])
+```
+
+Full ANCOLIE specification: [docs/GPV2_EXOTIQUE_ANCOLIE.md](docs/GPV2_EXOTIQUE_ANCOLIE.md)
+
 ## Local Development
 
 This project has no runtime dependency.
@@ -135,20 +168,26 @@ ora-core-neroflux/
 |- pyproject.toml
 |- docs/
 |  |- ORA_CORE_NEROFLUX_WhitePaper.md
-|  `- GPV2_EXOTIQUE_ALETHEIA.md
+|  |- GPV2_EXOTIQUE_ALETHEIA.md
+|  |- GPV2_EXOTIQUE_ANCOLIE.md
+|  `- GPV2_EXOTIQUE_ANCOLIE_WHITEPAPER.md
 |- schemas/
 |  |- aletheia.schema.json
+|  |- ancolie.schema.json
 |  `- neroflux.schema.json
 |- src/
 |  `- gpv2_neroflux/
 |     |- __init__.py
 |     |- aletheia.py
+|     |- ancolie.py
 |     `- neroflux.py
 |- examples/
+|  |- ancolie_signature.json
 |  |- basic_flow.json
 |  `- post_maj_reflection.json
 `- tests/
    |- test_aletheia.py
+   |- test_ancolie.py
    `- test_neroflux.py
 ```
 

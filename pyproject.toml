@@ -1,18 +1,18 @@
-[build-system]
+﻿[build-system]
 requires = ["setuptools>=68"]
 build-backend = "setuptools.build_meta"
 
 [project]
 name = "ora-core-neroflux"
 version = "0.1.0"
-description = "Deterministic ORA Core cognitive routing and post-update introspection modules."
+description = "Deterministic ORA Core cognitive routing, emotional indexing, and post-update introspection modules."
 readme = "README.md"
 requires-python = ">=3.10"
 license = { file = "LICENSE" }
 authors = [
   { name = "TwinsProductionAI" }
 ]
-keywords = ["ora-core", "gpv2", "neroflux", "aletheia", "post-maj", "cognitive-routing", "ai"]
+keywords = ["ora-core", "gpv2", "neroflux", "aletheia", "ancolie", "emotion", "rag", "companion", "post-maj", "cognitive-routing", "ai"]
 classifiers = [
   "Development Status :: 3 - Alpha",
   "Intended Audience :: Developers",

@@ -1,0 +1,97 @@
+﻿{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.org/schemas/gpv2-exotique-ancolie.schema.json",
+  "title": "GPV2_EXOTIQUE_ANCOLIE Packet",
+  "type": "object",
+  "additionalProperties": true,
+  "properties": {
+    "text": {
+      "type": "string",
+      "minLength": 1
+    },
+    "input": {
+      "type": "string",
+      "minLength": 1
+    },
+    "utterance": {
+      "type": "string",
+      "minLength": 1
+    },
+    "input_type": {
+      "type": "string",
+      "enum": ["text", "voice", "hybrid"],
+      "default": "text"
+    },
+    "mode": {
+      "type": "string",
+      "enum": ["LIGHT", "FULL", "TRACE"],
+      "default": "LIGHT"
+    },
+    "user_negative_intent": {
+      "type": "boolean",
+      "default": false
+    },
+    "user_requests_deep": {
+      "type": "boolean",
+      "default": false
+    },
+    "allow_storage": {
+      "type": "boolean"
+    },
+    "voice_features": {
+      "$ref": "#/$defs/voiceFeatures"
+    }
+  },
+  "$defs": {
+    "voiceFeatures": {
+      "type": "object",
+      "additionalProperties": true,
+      "properties": {
+        "loudness": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1,
+          "default": 0
+        },
+        "speech_rate": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1,
+          "default": 0
+        },
+        "pause_ratio": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1,
+          "default": 0
+        },
+        "pitch_variation": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1,
+          "default": 0
+        },
+        "tension": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1,
+          "default": 0
+        }
+      }
+    }
+  },
+  "anyOf": [
+    {
+      "required": ["text"]
+    },
+    {
+      "required": ["voice_features"]
+    },
+    {
+      "required": ["input"]
+    },
+    {
+      "required": ["utterance"]
+    }
+  ]
+}
